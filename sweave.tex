@@ -1,0 +1,46 @@
+\usepackage{longtable}
+\usepackage{pdfpages}
+
+\usepackage{Sweave}
+\begin{document}
+\input{sweave-concordance}
+
+\section{Read in Data}
+\begin{Schunk}
+\begin{Sinput}
+> require(arsenal)
+> require(knitr)
+> require(rmarkdown)
+> data(mockstudy)
+> tab1 <- summary(sort(tableby(cohort ~ Biomarker.C5a.pg.ml.serum
++                                        + Biomarker.CD30.pg.ml.serum
++                                        +Biomarker.CD40L.pg.ml.serum
++                                        +Biomarker.DPPIV.pg.ml.serum
++                                        +Biomarker.Galectin.3.pg.ml.serum
++                                        +Biomarker.IL.18.pg.ml.serum
++                                        +Biomarker.IL.1alpha.pg.ml.serum
++                                        +Biomarker.IL.6Ralpha.pg.ml.serum
++                                        +Biomarker.LBP.pg.ml.serum
++                                        +Biomarker.Lumican.pg.ml.serum
++                                        +Biomarker.MCP.4.pg.ml.serum
++                                        +Biomarker.MMP.3.pg.ml.serum
++                                        +Biomarker.RAGE.pg.ml.serum
++                                        +Biomarker.SHBG.pg.ml.serum
++                                        +Biomarker.Serpin.E1.pg.ml.serum
++                                        +Biomarker.alpha1.microglobulin.pg.ml.serum
++                                        +Biomarker.CCL17.pg.ml.MSD.BL.plasma
++                                        +Biomarker.CCL22.pg.ml.MSD.BL.plasma
++                                        +Biomarker.EOTAXIN.pg.ml.MSD.BL.plasma
++                                        +Biomarker.EOTAXIN3.pg.ml.MSD.BL.plasma
++                                        +Biomarker.Baseline.BI.Cytokines.Chemokines.IFNg.pg.ml.MSD.BL.plasma
++                                        +Biomarker.Baseline.BI.Cytokines.Chemokines.IL6.pg.ml.MSD.BL.plasma
++                                        +Biomarker.IL8.pg.ml.MSD.BL.plasma
++                                        +Biomarker.IP10.pg.ml.MSD.BL.plasma
++                                        +Biomarker.MCP1.pg.ml.MSD.BL.plasma
++                                        +Biomarker.MIP1b.pg.ml.MSD.BL.plasma
++                                        +Biomarker.TNFa.pg.ml.MSD.BL.plasma
++                                        +Biomarker.Genentech.CCL18.pg.ml.IMPACT.BL.serum
++                                        +Biomarker.Genentech.IL13.pg.ml.IMPACT.BL.serum
++                                        +Biomarker.Genentech.Periostin.ng.ml.ELECSYS.BL.serum
++                                        +Biomarker.Karolinska.hsCRP.hCRP.mg.L
++                                        ,data = df_to_be_analyzed_2,control = mycontrols_sup , simulate.p.value=TRUE, B=500, digits = 1),decreasing=FALSE),title="Measures of association between biomarkers and outcome variable ", pfootnote=TRUE)

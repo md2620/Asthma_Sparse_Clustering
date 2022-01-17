@@ -1,0 +1,17 @@
+Loading anaconda3/personal
+  Loading requirement: fix_unwritable_tmp fix_setxattr
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Error in if ((d1 + d2) == 0) keep.protos[m] <- FALSE : 
+  missing value where TRUE/FALSE needed
+Calls: mcclain_kproto -> kproto -> kproto.default
+Execution halted

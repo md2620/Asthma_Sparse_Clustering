@@ -1,0 +1,550 @@
+## Create boxplots to see how your clusters are differentiating in terms of the most important variables defined by K-proto.
+
+#Clear environment
+rm(list=ls())
+
+#Load df_unsup
+df_unsup = read.csv("/rds/general/user/md2620/home/asthma/Malo/Dataframes/Final/df_for_results_unsup_Oct24.csv")
+df_sup = read.csv("/rds/general/user/md2620/home/asthma/Malo/Dataframes/Final/df_for_results_sup_Oct28.csv")
+
+#Make sure cluster_optimal variable is recorded as a factor variable
+df_unsup$cluster_optimal <- as.factor(df_sup$cluster_optimal)
+df_sup$cluster_optimal <- as.factor(df_sup$cluster_optimal)
+
+#Plot the 20 most important variables as boxplot for the supervised K-prototype algorithm
+p1 <- ggplot(df_sup, aes(cluster_optimal, Age, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "Age distribution across clusters - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("Age") 
+p1_done <- p1 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p1_done
+
+p2 <- ggplot(df_sup, aes(cluster_optimal, Biomarker.Genentech.CCL18.pg.ml.IMPACT.BL.serum, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "Biomarker CCL18 levels (pg/ml) per cluster- Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("CCL18 levels (pg/ml)") 
+p2_done <- p2 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p2_done
+
+
+p3 <- ggplot(df_sup, aes(cluster_optimal, Questionnaires.ACQ.FEV1.Precentage, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "FEV1% across clusters - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("FEV1%")
+
+p3_done <- p3 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p3_done
+
+p4 <- ggplot(df_sup, aes(cluster_optimal, Clinical.Screening.Wbcs.x10.3.uL , fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "White blood cell levels per cluster - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("White blood cell (x10.3.uL)") 
+p4_done <- p4 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p4_done
+
+p5 <- ggplot(df_sup, aes(cluster_optimal, Biomarker.Baseline.BI.Cytokines.Chemokines.IL6.pg.ml.MSD.BL.plasma, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "Cytokines.Chemokines.IL6 levels in plasma per cluster - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("IL6 (pg.ml)") 
+p5_done <- p5 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p5_done
+
+p6 <- ggplot(df_sup, aes(cluster_optimal, Questionnaires.SNOT.Total.Imputed, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "SNOT questionnaires scores per cluster - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("SNOT scores") 
+p6_done <- p6 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p6_done
+
+p7 <- ggplot(df_sup, aes(cluster_optimal, Clinical.Baseline.PEF, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "Peak Expiratory Flow levels across clusters - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("PEF") 
+p7_done <- p7 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p7_done
+
+p8 <- ggplot(df_sup, aes(cluster_optimal, Omics.Propionylcarnitine, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "Propionylcarnitine levels across clusters - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("Propionylcarnitine") 
+p8_done <- p8 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p8_done
+
+p9 <- ggplot(df_sup, aes(cluster_optimal, Biomarker.Karolinska.hsCRP.hCRP.mg.L, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "High-sensitivity C-reactive protein levels per cluster - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("hsCRP-hCRP (mg.L)") 
+p9_done <- p9 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p9_done
+
+p10 <- ggplot(df_sup, aes(cluster_optimal, Biomarker.Galectin.3.pg.ml.serum, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "Galectin-3 levels per cluster - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("Galectin-3 (pg/ml)") 
+p10_done <- p10 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p10_done
+
+p11 <- ggplot(df_sup, aes(cluster_optimal, Questionnaires.AQLQ.Emotional.Total.Imputed, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "AQLQ questionnaires scores per cluster - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("AQLQ scores") 
+p11_done <- p11 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p11_done
+
+p12 <- ggplot(df_sup, aes(cluster_optimal, Omics.LTE4.ng.mmolC, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "Leukotriene-E4 levels per cluster - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("LTE4 (ng/mmolC)") 
+p12_done <- p12 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p12_done
+
+p13 <- ggplot(df_sup, aes(cluster_optimal, Clinical.Screening.Lymphocytes, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "Lymphocytes levels per cluster - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("Lymphocytes") 
+p13_done <- p13 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p13_done
+
+p14 <- ggplot(df_sup, aes(cluster_optimal, Biomarker.EOTAXIN.pg.ml.MSD.BL.plasma, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "EOTAXIN levels per cluster - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("EOTAXIN (pg/ml)") 
+p14_done <- p14 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p14_done
+
+p15 <- ggplot(df_sup, aes(cluster_optimal, Omics.tetranorPGDM.ng.mmolC, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "Tetranor-PGDM levels per cluster - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("Tetranor-PGDM (ng/mmolC)") 
+p15_done <- p15 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p15_done
+
+p16 <- ggplot(df_sup, aes(cluster_optimal, Omics.Galacturonic.acid, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "Galacturonic acid levels per cluster - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("Galacturonic acid") 
+p16_done <- p16 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p16_done
+
+p17 <- ggplot(df_sup, aes(cluster_optimal, Biomarker.MMP.3.pg.ml.serum, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "Matrix Metalloproteinase-3 levels in serum per cluster - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("MMP-3 (pg/ml)") 
+p17_done <- p17 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p17_done
+
+p18 <- ggplot(df_sup, aes(cluster_optimal, Clinical.Screening.Diastolic.Blood.Pressure, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "Diastolic blood pressure difference across clusters - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("Diastolic Blood Pressure (Hg/mm)") 
+p18_done <- p18 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p18_done
+
+p19 <- ggplot(df_sup, aes(cluster_optimal, Biomarker.IL.1alpha.pg.ml.serum, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "Interleukin 1-alpha levels across clusters - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("IL 1-alpha (pg/ml)") 
+p19_done <- p19 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p19_done
+
+p20 <- ggplot(df_sup, aes(cluster_optimal, Omics.dinor.8.isoPGF2a.ng.mmolC, fill=cluster_optimal)) +      
+  geom_boxplot() +
+  theme_grey(base_size = 20)+
+  theme(title = element_text(size=12, face='bold'),
+        axis.title.y = element_text(color='black', face='plain'), 
+        axis.title.x = element_text(color='black', face='plain'))+
+  labs(title = "2,3-dinor-8-iso Prostaglandin F2 levels across clusters - Optimal supervised Kprototype",fill = "cluster") +
+  xlab("cluster") + 
+  ylab("Dinor-8-iso PG F2 (ng/mmolC") 
+p20_done <- p20 + geom_boxplot(outlier.colour = "red", outlier.shape = 1)
+p20_done
+
+############ BOXPLOTS RESULTS #############
+#Save the boxplot results of the variables driving the most the clustering
+library(patchwork)
+p1_done + p2_done + p3_done + p4_done
+ggsave("/rds/general/user/md2620/home/asthma/Malo/Results/sup_boxplots_oct29/p1_p4.pdf", width = 20, height = 12)
+
+
+library(patchwork)
+p1_done + p2_done / p3_done
+ggsave("/rds/general/user/md2620/home/asthma/Malo/Results/sup_boxplots_oct29/p1_p3.pdf", width = 20, height = 12)
+
+
+library(patchwork)
+p4_done + p5_done
+ggsave("/rds/general/user/md2620/home/asthma/Malo/Results/sup_boxplots_oct29/p4_p5.pdf", width = 20, height = 12)
+
+library(patchwork)
+p5_done + p6_done + p7_done + p8_done
+ggsave("/rds/general/user/md2620/home/asthma/Malo/Results/sup_boxplots_oct29/p5_p8.pdf", width = 20, height = 12)
+
+library(patchwork)
+p9_done + p10_done + p11_done + p12_done
+ggsave("/rds/general/user/md2620/home/asthma/Malo/Results/sup_boxplots_oct29/p9_p12.pdf", width = 20, height = 12)
+
+library(patchwork)
+p13_done + p14_done + p15_done + p16_done
+ggsave("/rds/general/user/md2620/home/asthma/Malo/Results/sup_boxplots_oct29/p13_p16.pdf", width = 20, height = 12)
+
+library(patchwork)
+p17_done + p18_done + p19_done + p20_done
+ggsave("/rds/general/user/md2620/home/asthma/Malo/Results/sup_boxplots_oct29/p17_p20.pdf", width = 20, height = 12)
+
+
+###### Crosstabs fro unsupervised clustering instead of boxplots because lots of categorical variables
+df_unsup$Emphysema.Or.Copd <- as.factor(df_unsup$Emphysema.Or.Copd)
+
+levels(df_unsup$Emphysema.Or.Copd)
+df_unsup[df_unsup==""]<-"Missing"
+df_unsup[is.na(df_unsup)] <- "Missing"
+
+
+# 5 most important variables in cluster 2
+p1_test <- ggplot(data = df_unsup, aes(x = cluster_optimal, fill = Emphysema.Or.Copd)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Emphysema or COPD occurence in each cluster - Optimal unsupervised Kprototype",fill = "Emphysema or Copd") +
+  xlab("cluster") + 
+  ylab("Observations count") 
+
+
+library(ggplot2)
+p1_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Emphysema.Or.Copd))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2)) ),
+            stat="count", position=position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Emphysema or COPD occurence in each cluster",fill = "Emphysema or Copd")+
+  ylab('Percentage of observations in each emphysema or Copd categories, %') +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+
+
+p2_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.AQLQ.Question.26))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Experienced asthma symptoms as a result of being exposed to strong smells or perfume",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p2_unsup
+
+p3_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Supplemental.Oxygen))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Received oxygen support",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p3_unsup
+
+p4_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.SNOT.Question.19))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Sadness level - increasing ordinal scale",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p4_unsup
+
+p5_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.ACQ.Question.3))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Limitations in activity last week because of asthma - increasing ordinal scale",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p5_unsup
+
+p6_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.ACQ.Question.1))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Average number of times woken up at night because of asthma in the past week - increasing ordinal scale",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p6_unsup
+
+p7_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.ACQ.Question.5))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Time spent wheezing last week - increasing ordinal scale") +
+  xlab("cluster") +
+  ylab("Observations answers, %")+
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p7_unsup
+
+p8_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.SNOT.Question.13))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Lack of good night's sleep - increasing ordinal scale") +
+  xlab("cluster") +
+  ylab("Observations answers, %") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p8_unsup
+
+p9_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.SNOT.Question.16))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Reduced productivity - increasing ordinal scale") +
+  xlab("cluster") +
+  ylab("Observations answers, %")+
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p9_unsup
+
+p10_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Intubation))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Intubation",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p10_unsup
+
+p11_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.AQLQ.Question.12))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Discomfort or distress because of coughing in the last 2 weeks",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p11_unsup
+
+
+p12_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.SNOT.Question.17))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Reduced concentration - increasing ordinal scale",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p12_unsup
+
+p13_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.AQLQ.Question.11))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Feeling like avoiding a situation or environment because of cigarette smoke - increasing ordinal scale",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p13_unsup
+
+p14_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Pneumonia))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Had pneumonia by the past",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p14_unsup
+
+p15_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Icu.Admission))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Intensive care unit admission",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p15_unsup
+
+p16_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.SNOT.Question.18))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Frustrated/restless/irritable - increasing ordinal scale",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p16_unsup
+
+p17_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.ACQ.Question.2))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "How bad asthma symptoms were in the morning after waking up on average the past week - increasing ordinal scale",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p17_unsup
+
+p18_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.SNOT.Question.2))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Sneezing - increasing ordinal scale",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p18_unsup
+
+p19_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.SNOT.Question.5))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Post-nasal discharge - increasing ordinal scale",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p19_unsup
+
+p20_unsup <- ggplot(df_unsup, aes(x=cluster_optimal, fill=Questionnaires.HADS.Question.2))+
+  geom_bar(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..]), position="dodge" ) +
+  geom_text(aes( y=..count../tapply(..count.., ..x.. ,sum)[..x..], label=scales::percent(round(..count../tapply(..count.., ..x.. ,sum)[..x..],2))),
+            stat="count", position = position_dodge(0.9), vjust=-0.5)+
+  labs(title = "Feel like I am slowed down - increasing ordinal scale",fill = "Answer")+
+  ylab("Observations answers, %") +
+  xlab("cluster") +
+  theme_grey(base_size = 20)+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+p20_unsup
+
+#Save the plots 1 by 1 because they are too big
+ggsave(plot = p1_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p1.pdf", width = 20, height = 12)
+ggsave(plot = p2_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p2.pdf", width = 20, height = 12)
+ggsave(plot = p3_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p3.pdf", width = 20, height = 12)
+ggsave(plot = p4_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p4.pdf", width = 20, height = 12)
+ggsave(plot = p5_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p5.pdf", width = 20, height = 12)
+ggsave(plot = p6_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p6.pdf", width = 20, height = 12)
+ggsave(plot = p7_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p7.pdf", width = 20, height = 12)
+ggsave(plot = p8_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p8.pdf", width = 20, height = 12)
+ggsave(plot = p9_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p9.pdf", width = 20, height = 12)
+ggsave(plot = p10_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p10.pdf", width = 20, height = 12)
+ggsave(plot = p11_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p11.pdf", width = 20, height = 12)
+ggsave(plot = p12_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p12.pdf", width = 20, height = 12)
+ggsave(plot = p13_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p13.pdf", width = 20, height = 12)
+ggsave(plot = p14_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p14.pdf", width = 20, height = 12)
+ggsave(plot = p15_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p15.pdf", width = 20, height = 12)
+ggsave(plot = p16_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p16.pdf", width = 20, height = 12)
+ggsave(plot = p17_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p17.pdf", width = 20, height = 12)
+ggsave(plot = p18_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p18.pdf", width = 20, height = 12)
+ggsave(plot = p19_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p19.pdf", width = 20, height = 12)
+ggsave(plot = p20_unsup,"/rds/general/user/md2620/home/asthma/Malo/Results/unsup_boxplots_oct29/p20.pdf", width = 20, height = 12)
+
+#you can always change to hjust = 0, angle = 90 if missing space [put % vertically and centered]
